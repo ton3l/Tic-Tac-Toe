@@ -1,4 +1,4 @@
-window.gameState = 0;
+window.player = 0;
 const win = new CustomEvent('win', {
     detail: {
         'cells': Array.from(document.querySelectorAll('.cell'))
@@ -42,10 +42,15 @@ document.addEventListener('win', event => {
     event.detail.cells.forEach(cell => {
         var old_element = cell;
         var new_element = old_element.cloneNode(true);
-        old_element.parentNode.replaceChild(new_element, old_element);
-    })
+        try { old_element.parentNode.replaceChild(new_element, old_element) } catch (e) {}; //Da erro, mas funciona
+    });
 
-    console.log('Venceu!');
+    if(window.player % 2 !== 0) {
+        document.querySelector('#vencedor').innerHTML = 'X';
+        return;
+    }
+
+    document.querySelector('#vencedor').innerHTML = 'O';
 })
 
 function winTester() {
@@ -53,7 +58,7 @@ function winTester() {
 
     cellsChecker(cells);
     
-    cells.sort( (a, b) => { return Number(a.id) - Number(b.id); } );
+    cells.sort( (a, b) => { return Number(a.id) - Number(b.id); } );//Ordena as células pelo id, que está seguindo a ordem das colunas
     
     cellsChecker(cells);
 }
@@ -62,15 +67,15 @@ document.querySelectorAll('.cell').forEach(cell => {
     cell.addEventListener('click', () => {
         if(cell.innerHTML) return;
         
-        if (window.gameState % 2 === 0) {
+        if (window.player % 2 === 0) {
             cell.innerHTML = 'X';
-            gameState = 1;
+            window.player = 1;
             window.winTester();
             return;
         }
 
         cell.innerHTML = 'O';
-        gameState = 0;
+        window.player = 0;
         window.winTester();
         return;
     })

@@ -3,6 +3,11 @@
     color: white;
 }
 
+h1{
+    width: 100vw;
+    text-align: center;
+}
+
 body{
     background-color: black;
     height: 90vh;
@@ -47,4 +52,5 @@ table{
     text-align: center;
     color: white;
     cursor: pointer;
+    user-select: none;
 }
