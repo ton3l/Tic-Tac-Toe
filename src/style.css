@@ -1,0 +1,50 @@
+*{
+    font-family: cursive;
+    color: white;
+}
+
+body{
+    background-color: black;
+    height: 90vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 24px;
+    box-sizing: border-box;
+}
+
+button{
+    cursor: pointer;
+    background-color: black;
+    color: white;
+    border: 2px solid white;
+    border-radius: 8px;
+    padding: 12px 24px;
+    font-size: 16pt;
+    font-family: cursive;
+}
+
+table{
+    border-collapse: collapse;
+
+
+    & .row{
+        border-top: 6px solid white;
+        border-bottom: 6px solid white;
+    }
+    
+    & .column{
+        border-left: 6px solid white;
+        border-right: 6px solid white;
+    }
+}
+
+.cell{
+    width: 120px;
+    height: 120px;
+    font-size: 64pt;
+    text-align: center;
+    color: white;
+    cursor: pointer;
+}
