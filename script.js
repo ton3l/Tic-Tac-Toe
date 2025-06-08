@@ -1,3 +1,4 @@
+//Fluxo começa no EventListener das células. (linha 67)
 window.player = 0;
 const win = new CustomEvent('win', {
     detail: {
